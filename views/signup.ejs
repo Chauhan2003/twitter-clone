@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Twitter</title>
+    <style>
+        body {
+            background-color: #000;
+            color: #fff;
+            font-family: 'TwitterChirp', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 600px;
+            margin: 50px auto;
+        }
+
+        .signup-box {
+            border: 1px solid #71767b;
+            background-color: #16181c;
+            padding: 40px;
+            border-radius: 10px;
+        }
+
+        .header {
+            margin-bottom: 30px;
+            text-align: center;
+            padding: 10px;
+            color: #fff;
+            font-size: 30px;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+
+        .form-label {
+            font-size: medium;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .form-input {
+            border-radius: 5px;
+            font-size: medium;
+            padding: 12px;
+            width: 100%;
+            box-sizing: border-box;
+            border: none;
+            margin: 10px 0 15px 0;
+        }
+
+        .radio-label {
+            font-size: medium;
+            padding: 10px 0 20px 0;
+        }
+
+        .register-btn {
+            background-color: #1d9bf0;
+            color: #fff;
+            cursor: pointer;
+            font-weight: bolder;
+            border-radius: 10px;
+            font-size: large;
+            padding: 12px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .message {
+            text-align: center;
+            color: #fff;
+            margin-top: 20px;
+        }
+
+        .login-link {
+            color: #71767b;
+            text-decoration: underline;
+        }
+
+        .login-link:hover {
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <form action="/reg_submit" method="post" class="signup-box">
+            <div class="header">
+                Sign up
+            </div>
+            <label for="fname" class="form-label">First Name:</label>
+            <input required type="text" name="fname" class="form-input">
+
+            <label for="mname" class="form-label">Middle Name:</label>
+            <input type="text" name="mname" class="form-input">
+
+            <label for="lname" class="form-label">Last Name:</label>
+            <input required type="text" name="lname" class="form-input">
+
+            <label for="email" class="form-label">Enter Email or Mobile Number:</label>
+            <input required type="text" name="email" class="form-input">
+
+            <label for="username" class="form-label">Enter Username:</label>
+            <input required type="text" name="username" class="form-input">
+
+            <label for="password" class="form-label">Enter Password:</label>
+            <input required type="password" name="password" class="form-input">
+
+            <label for="cpass" class="form-label">Confirm Password:</label>
+            <input required type="password" name="cpass" class="form-input">
+
+            <label for="dob" class="form-label">Date Of Birth:</label>
+            <input required type="date" name="dob" class="form-input">
+
+            <label class="form-label">Gender:</label>
+            <div class="radio-label">
+                <label for="male"><input type="radio" name="gender" value="0">Male:</label>
+                <label for="female"><input type="radio" name="gender" value="1">Female:</label>
+                <label for="dnd"><input type="radio" name="gender" value="2">DND:</label>
+            </div>
+
+            <input type="submit" value="Register" class="register-btn">
+        </form>
+        <h3 class="message">
+            <%=msg%>
+        </h3>
+        <div style="color: #71767b;">
+            <p>Already have an account? <a href="/" class="login-link">Login Up</a></p>
+        </div>
+    </div>
+</body>
+
+</html>

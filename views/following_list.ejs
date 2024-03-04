@@ -1,0 +1,28 @@
+<%- include('header1.ejs') %>
+<div style="display: flex; flex-direction: column; justify-content: center; text-align: center; ">
+<h3>List of User you are following</h3>
+<div style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
+    <form action="/unfollow_action" method="post">
+        <table>
+            <% for(var i =0; i < result.length; i++) { %>
+                <tr >
+                    <td>
+                        <span style="font-weight: bold;">
+                            <%=result[i].f_name%> <%=result[i].l_name%>
+                        </span>
+                        @<%=result[i].username%>
+                    </td>
+                    <td>
+                        <button type="submit"name="follow_uid" style="background-color: white; border-radius: 10px; cursor: pointer; font-weight: bold;" value=<%=result[i].uid%> >
+                            Unfollow
+                        </button>
+                        
+                    </td>
+                </tr>
+            <% } %>
+        </table>
+    </form>
+</div>
+</div>
+</div>
+</div>

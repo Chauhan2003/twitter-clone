@@ -1,0 +1,14 @@
+<%- include('header1.ejs') %>
+<div style="display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; ">
+
+<h3>List of User you are followers</h3>
+<div style="text-align: left;">
+    <% for(var i =0; i < result.length; i++) { %>
+        <div>
+            •<span style="font-weight: bold;"><%=result[i].f_name%> <%=result[i].l_name%></span> @<%=result[i].username%>
+        </div>
+    <% } %>
+</div>
+</div>
+</div>
+</div>

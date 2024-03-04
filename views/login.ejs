@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Twitter</title>
+    <style>
+        body {
+            background-color: #14181c;
+            color: #fff;
+            font-family: 'TwitterChirp', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 400px;
+            margin: 120px auto;
+            text-align: center;
+        }
+
+        .login-box {
+            border: 1px solid #71767b;
+            background-color: #16181c;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .header {
+            user-select: none;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            text-align: center;
+            padding: 5px;
+            color: #fff;
+            font-size: 35px;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+
+        .form-input {
+            border-radius: 5px;
+            font-size: large;
+            padding: 12px;
+            width: 100%;
+            margin-bottom: 15px;
+            box-sizing: border-box;
+            border: none;
+        }
+
+        .login-btn {
+            background-color: green;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+            border-radius: 5px;
+            font-size: large;
+            padding: 12px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .message {
+            text-align: center;
+            color: #fff;
+            margin-top: 20px;
+        }
+
+        .signup-link {
+            color: #71767b;
+            text-decoration: none;
+        }
+
+        .signup-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <form action="/login_submit" method="post" class="login-box">
+            <div class="header">
+                Sign In
+            </div>
+            <input type="text" required placeholder="Email or Mobile Number" name="email" class="form-input">
+            <input type="password" required placeholder="Password" name="pass" class="form-input">
+            <input type="submit" value="Login" class="login-btn">
+        </form>
+        <h3 class="message">
+            <%=msg%>
+        </h3>
+        <div style="color: #71767b;">
+            <p>Don't have an account?
+                <a href="/signup" class="signup-link">Sign Up</a>
+            </p>
+        </div>
+    </div>
+</body>
+
+</html>
