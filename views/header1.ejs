@@ -1,65 +1,172 @@
-<html>
-<!--grey dark => rgb(22, 24, 28); -->
-<!-- grey => rgb(113, 118, 123); -->
-<!-- blue => rgb(29, 155, 240); -->
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Twitter</title>
+    <style>
+        body {
+            font-family: 'TwitterChirp', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: black;
+            color: white;
+            margin: 0;
+            padding: 0;
+        }
+
+        #header {
+            width: 100%;
+            text-align: center;
+            padding: 10px;
+            margin: 0 auto;
+            background-color: green;
+            color: white;
+            font-size: 30px;
+            clear: both;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        #search-container {
+            width: 800px;
+            padding-top: 10px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin: 0 auto;
+        }
+
+        #profile-image {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 12px;
+            border: 2px solid white;
+            color: white;
+        }
+
+        #search-form {
+            width: 400px;
+        }
+
+        #search-input {
+            background-color: black;
+            border: 1px solid white;
+            color: white;
+            padding: 10px;
+            border-radius: 4px;
+            width: 70%;
+            outline: none;
+        }
+
+        #search-button {
+            border-radius: 4px;
+            font-weight: bold;
+            border: none;
+            padding: 11px;
+            background-color: green;
+            cursor: pointer;
+            color: white;
+        }
+
+        #notification-msg {
+            background-color: green;
+            width: 23px;
+            height: 23px;
+            display: flex;
+            font-size: 12px;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+            color: white;
+        }
+
+        #sidebar {
+            width: 200px;
+            margin-top: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            float: left;
+            margin-left: 20px;
+            border-radius: 4px;
+            padding: 10px;
+            padding-bottom: 20px;
+            background-color: rgb(22, 24, 28);
+            text-align: center;
+        }
+
+        .sidebar-link {
+            border-radius: 20px;
+            margin-top: 10px;
+            background-color: white;
+            width: 80%;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: 0.2s ease-in-out;
+        }
+
+        .sidebar-link:hover {
+            font-size: 20px;
+        }
+
+        .sidebar-link a {
+            text-align: center;
+            width: 100%;
+            color: rgb(22, 24, 28);
+            text-decoration: none;
+            padding: 6px;
+            font-weight: bold;
+        }
+
+        #main-content {
+            width: 100%;
+            padding: 1px;
+        }
+    </style>
 </head>
-<style>
-    ul li a{
-        text-transform: none;
-    }
 
-    ul li{
-        list-style: none;
-    }
-</style>
+<body>
+    <div id="header">Twitter</div>
+    <div id="search-container">
+        <div id="profile-image">Profile</div>
+        <form id="search-form" action="/search_data" method="get">
+            <input id="search-input" type="text" name="search" placeholder="Search Username" />
+            <input id="search-button" type="submit" value="Go" />
+        </form>
+        <h5 id="notification-msg">
+            2
+        </h5>
+    </div>
 
-<body style=" font-family: TwitterChirp, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;  background-color: black; color: white;">
-    <div style="width:1000px; margin:0 auto; ">
-        <div style="border-radius: 10px;width:1000px; text-align: center;padding: 10px; margin:0 auto; background-color: rgb(29, 155, 240); color:white; font-size:30px; clear:both;font-family: 'Franklin Gothic Medium','Arial Narrow',Arial, sans-serif; padding-left:10px">
-            Twitter
+    <div id="sidebar">
+        <div class="sidebar-link">
+            <a href="/home">Home</a>
         </div>
-        <div style="width:1000px; padding: 10px; display: flex; justify-content: space-around; align-items: center;">
-            <div style="width:50px; height: 50px; border:2px solid grey; color: rgb(29, 155, 240);">Image will be here</div>
-            <form action="/search_data" method="get" style="width:300px; ">
-                <input type="text" style="background-color: black; border: 1px solid rgb(113, 118, 123); color: white; padding: 10px; border-radius: 10px;" name="search" placeholder="Search Username"/>
-                <input type="submit" value="Go" style="border-radius: 10px; border: 1px solid rgb(113, 118, 123); font-weight: bold; padding: 10px ; background-color: rgb(29, 155, 240); cursor: pointer; color: white;"/>
-            </form> 
-            <h5 style="color: rgb(29, 155, 240);"><%=msg%></h5>
+        <div class="sidebar-link">
+            <a href="/uprofile">Profile</a>
         </div>
-       
-        <div style="width:1000px; height: auto;   clear:both;">
-            
-                <div style="width:150px; margin-top: 10px; display: flex; flex-direction: column;justify-content: center; align-items: center; float: left;  padding: 0; border-radius: 10px; padding-top: 10px; padding-bottom: 10px; border: 1px solid rgb(113, 118, 123); background-color: rgb(22, 24, 28); text-align: center; ">
-                        <div  style="border-radius: 20px; margin-top: 10px; background-color: white; width: 80%; height: 40px; display: flex; justify-content: center; align-items: center;">
-                            <a href="/home" style="text-align: center; width: 100%; color: rgb(22, 24, 28); text-decoration: none; padding: 6px; font-weight: bold;">
-                                Home
-                            </a>
-                        </div>
-                        <div  style="border-radius: 20px; margin-top: 10px; background-color: white; width: 80%; height: 40px; display: flex; justify-content: center; align-items: center;">
-                            <a href="/uprofile" style="text-align: center; width: 100%; color: rgb(22, 24, 28); text-decoration: none; padding: 6px; font-weight: bold;">
-                                Profile
-                            </a>
-                        </div>
-                        <div  style="border-radius: 20px; margin-top: 10px; background-color: white; width: 80%; height: 40px; display: flex; justify-content: center; align-items: center;">
-                            <a href="/followers" style="text-align: center; width: 100%; color: rgb(22, 24, 28); text-decoration: none; padding: 6px; font-weight: bold;">
-                                Followers
-                            </a>
-                        </div>
-                        <div  style="border-radius: 20px; margin-top: 10px; background-color: white; width: 80%; height: 40px; display: flex; justify-content: center; align-items: center;">
-                            <a href="/following" style="text-align: center; width: 100%; color: rgb(22, 24, 28); text-decoration: none; padding: 6px; font-weight: bold;">
-                                Following
-                            </a>
-                        </div>
-                        <div  style="border-radius: 20px; margin-top: 10px; background-color: white; width: 80%; height: 40px; display: flex; justify-content: center; align-items: center;">
-                            <a href="/logout" style="text-align: center; width: 100%; color: rgb(22, 24, 28); text-decoration: none; padding: 6px; font-weight: bold;">
-                                Logout
-                            </a>
-                        </div>
-                    </div>
-            
-<!--End of div left menu-->
-<!--div for tweet box-->
-<div style="padding: 1px;">
-    
+        <div class="sidebar-link">
+            <a href="/followers">Followers</a>
+        </div>
+        <div class="sidebar-link">
+            <a href="/following">Following</a>
+        </div>
+        <div class="sidebar-link">
+            <a href="/logout">Logout</a>
+        </div>
+    </div>
+
+    <!-- Main Content Goes Here -->
+    <div id="main-content">
+        <!-- Your existing content here -->
+    </div>
+</body>
+
+</html>

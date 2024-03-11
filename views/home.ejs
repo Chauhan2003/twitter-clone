@@ -1,55 +1,64 @@
 <%- include('header1.ejs') %>
-        
-            <div style="width:650px; height:500px; padding: 50px; display: flex; align-items: center; flex-direction: column;">
-                <form action="/tweet_submit" method="post" 
-                
-                enctype="multipart/form-data"
-                
-                style="display: flex; align-items: center; flex-direction: column;">
-                    <div style="margin: 10px; display: flex; flex-direction: column; gap: 10px; align-items: center; justify-content: center;">
-                        <textarea id="tweet" placeholder="Say something" name="tweet" style="text-align: center; background-color: rgb(22, 24, 28); color: white; border-radius: 4px; width:400px; height:100px; margin-left:20px;"></textarea>
-                        <label for="tweet_img"  style="font-weight: bold;color: rgb(113, 118, 123);">
-                            <input type="file" name="tweet_img" id="tweet_img" style="display: none;"/>
-                            <img src="/images.png" id="icon" width="30" style="border-radius: 4px; cursor: pointer;">
-                        </label>
-                    </div>
-                    
-                    <input type="submit" value="Tweet" style="border-radius: 10px; font-size: larger; border: 1px solid rgb(113, 118, 123); font-weight: bold; padding: 10px ; background-color: rgb(29, 155, 240); cursor: pointer; color: white;"/>
-                </form>
-                <h2 style="text-align: center; border-radius: 10px; background-color: white; color: rgb(22, 24, 28); text-decoration: none; padding: 2px; width: 100px;">Feed</h2>
-                <div style="border: 1px solid rgb(113, 118, 123); background-color: rgb(22, 24, 28); border-radius: 4px; width: 100%;">
-                    <% for(var i = 0; i < result.length; i++) { %>
-                        <div style="margin-top: 20px; display: flex; flex-direction: column; justify-content: center; align-items: center; border-bottom: 1px solid grey; padding: 10px;">
-                            
-                            <div style=" text-align: left; width: 80%; padding: 10px;">
-                                <form action="" method="post">
-                                    <div style="padding: 10px;">
-                                        <span style="font-weight: bold;">
-                                            <%=result[i].f_name%> <%=result[i].l_name%>
-                                        </span>
-                                        <span style="color: rgb(113, 118, 123);">
-                                            @<%=result[i].username%> • <%=(result[i].datetime.getDate()+"-"+(result[i].datetime.getMonth()+1)+"-"+result[i].datetime.getFullYear())%>
-                                        </span>
-                                        </div>
-                                    <span style="padding: 10px;"><%=result[i].content%></span>
-                                    <br/>
-                                    <% if (result[i].type != '' && (result[i].type=== 'image/jpeg' || result[i].type=== 'image/jpg' || result[i].type=== 'image/png')) { %>
-                                    <img src="uploads/<%=result[i].img_vid_name%>" width="400" style="border-radius: 20px; border: 1px solid black; margin: 10px;"/>
-                                    <% } else if (result[i].type === 'video/mp4') { %>
-                                        <video src="uploads/<%=result[i].img_vid_name%>" controls width="400" style="border-radius: 20px; border: 1px solid black; margin: 10px;"/>
-                                    <% } %>
-                                    
-                                    <button type="submit"name="tid" style="background-color: white; border-radius: 10px; cursor: pointer; font-weight: bold;" value=<%=result[i].uid%> >
-                                        comment
-                                    </button>
 
-                                </form> 
-                            </div>
-                        </div>
-                    <% } %>
-                </div>
+    <div
+        style="width: 650px; padding: 50px; display: flex; align-items: center; flex-direction: column; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+        <form action="/tweet_submit" method="post" enctype="multipart/form-data"
+            style="display: flex; align-items: center; flex-direction: column; width: 100%;">
+
+            <div
+                style="margin: 10px; display: flex; flex-direction: column; gap: 10px; align-items: center; justify-content: center;">
+                <textarea id="tweet" placeholder="Say something" name="tweet"
+                    style="text-align: center; background-color: rgb(22, 24, 28); color: white; border-radius: 4px; width: 450px; height: 100px; margin-left: 20px; outline: none; border: 2px solid white"></textarea>
+                <label for="tweet_img" style="font-weight: bold;color: rgb(113, 118, 123); margin: 10px 0px;">
+                    <input type="file" name="tweet_img" id="tweet_img" style="display: none;" />
+                    <img src="/images.png" id="icon" width="30" style="border-radius: 4px; cursor: pointer;">
+                </label>
             </div>
+
+            <input type="submit" value="Tweet"
+                style="border-radius: 4px; font-size: 17px; font-weight: 600; padding: 10px 20px; background-color: green; border: none; cursor: pointer; color: white;" />
+        </form>
+
+        <h2
+            style="text-align: center; border-radius: 4px; background-color: white; color: black; text-decoration: none; padding: 5px 0px; width: 100%; margin-top: 40px;">
+            Feed</h2>
+
+        <div
+            style="border: 1px solid rgb(113, 118, 123); background-color: rgb(22, 24, 28); border-radius: 4px; width: 100%;">
+            <% for(var i=0; i < result.length; i++) { %>
+                <div
+                    style="margin-top: 20px; display: flex; flex-direction: column; justify-content: center; align-items: center; border-bottom: 1px solid grey; padding: 20px;">
+
+                    <div style="text-align: left; width: 80%; padding: 10px;">
+                        <div style="padding: 10px;">
+                            <span style="font-weight: bold; color: green;">
+                                <%=result[i].f_name%>
+                            </span>
+                            <span style="color: rgb(113, 118, 123);">
+                                @<%=result[i].username%> •
+                                    <%=(result[i].datetime.getDate()+"-"+(result[i].datetime.getMonth()+1)+"-"+result[i].datetime.getFullYear())%>
+                            </span>
+                        </div>
+                        <span style="padding: 10px;">
+                            <%=result[i].content%>
+                        </span>
+                        <br />
+                        <% if (result[i].type !='' && (result[i].type==='image/jpeg' || result[i].type==='image/jpg' ||
+                            result[i].type==='image/png' )) { %>
+                            <img src="uploads/<%=result[i].img_vid_name%>" width="100%"
+                                style="border-radius: 10px; margin-top: 10px;" />
+                            <% } else if (result[i].type==='video/mp4' ) { %>
+                                <video src="uploads/<%=result[i].img_vid_name%>" controls width="100%"
+                                    style="border-radius: 10px; margin-top: 10px;"></video>
+                                <% } %>
+
+                                    <button type="submit" name="tid"
+                                        style="cursor: pointer; background-color: transparent; border: none; font-weight: bold; color: white; margin-top: 10px; padding: 10px;"
+                                        value=<%=result[i].uid%>>
+                                        Comment
+                                    </button>
+                    </div>
+                </div>
+                <% } %>
         </div>
     </div>
-</body> 
-</html>

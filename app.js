@@ -1,15 +1,18 @@
 var express = require('express');
+var color = require('colors');
 var session = require('express-session');
 var bodyParser = require('body-parser');
 var db = require('./db.js');
 const sendVarifyMail = require('./mail.js')
+
+
 const dotenv = require('dotenv');
 dotenv.config();
 
 var app = express();
 var multer = require('multer');
 
-// MULTER:
+// MULTER:jh 
 var storage = multer.diskStorage({
     destination: (req, file, cb) => {
         cb(null, 'public/uploads/');
@@ -315,5 +318,5 @@ app.post('/profile_submit', function (req, res) {
 // CREATING SERVER:
 const port = process.env.PORT || 3000;
 app.listen(port, function () {
-    console.log(`Server is running on port: ${port}`);
+    console.log(`Server is running on port: ${port}`.bgGreen);
 });

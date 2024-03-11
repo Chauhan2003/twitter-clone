@@ -19,7 +19,7 @@ async function sendVarifyMail(email_to) {
                 We're excited to have you on board! Please click the link below to verify your email address.
             </p>
             <div style="text-align: center; margin-top: 20px;">
-                <a href="http://localhost:8080/verify?email=${email_to}" style="display: inline-block; padding: 12px 24px; background-color: #d9534f; color: #fff; text-decoration: none; font-size: 18px; border-radius: 5px; cursor: pointer;">
+                <a href="http://localhost:8080/varify?email=${email_to}" style="display: inline-block; padding: 12px 24px; background-color: #d9534f; color: #fff; text-decoration: none; font-size: 18px; border-radius: 5px; cursor: pointer;">
                     Verify Your Email
                 </a>
             </div>
